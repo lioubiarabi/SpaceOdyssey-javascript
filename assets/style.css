@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poltawski+Nowy:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    /* color varables */
+    --lightb: #001233;
+    --lightb2: #0353a4;
+    --darkb: #023e7d;
+    --darkb2: #002855;
+    --darkb3: #001845;
+    --darkb4: #001233;
+
+    /* fonts */
+    --roboto: "Roboto", sans-serif;
+    --polta: "Poltawski Nowy", serif;
+
+
+}
+body{
+    margin: 0;
+    padding: 0;
+}
