@@ -238,7 +238,7 @@ body {
     gap: 20px;
     background-color: #020305;
     border-radius: 25px;
-    box-shadow: 5px 0 0 5x rgba(0, 0, 0, 0.5), -5px 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 }
 
 .astro-image {
@@ -250,37 +250,35 @@ body {
     width: 400px;
     background: linear-gradient(180deg, #252525, #3d3d3d);
     color: white;
-    margin-right: 30px;
+    margin: 30px 20px;
     padding: 35px 60px;
     border-radius: 25px;
-}
-
-.astro-content {
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
-.astro-content h1 {
+.astro .content h1 {
     font-family: var(--roboto);
     font-size: 30px;
 }
 
-.astro-content p {
+.astro .content p {
     font-family: var(--polta);
     font-size: 16px;
 }
 
-.astro-content button {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 25px;
+
+.astro .content button {
+    align-self: flex-end;
+    width: 130px;
+    padding: 17px 25px;
     background: var(--lightgray);
-    border-radius: 30px;
-    border: 0;
+    border-radius: 12px;
+    border: 0px;
     box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
 }
 
-.astro-content button a {
+.astro .content button a {
     text-decoration: none;
     color: black;
     font-family: var(--roboto);
