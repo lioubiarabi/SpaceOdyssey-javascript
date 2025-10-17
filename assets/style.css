@@ -114,12 +114,13 @@ body {
 }
 
 /* cards */
- .homeCards {
+.homeCards {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 25px auto;
 }
+
 .homeCards .card {
     border-radius: 24px;
     width: 325px;
@@ -130,20 +131,24 @@ body {
     background-position: center;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
-.homeCards .card:last-child{
+
+.homeCards .card:last-child {
     margin-right: 0;
 }
+
 .homeCards .card .card-content {
     padding: 25px 20px;
     display: flex;
     flex-direction: column;
 }
+
 .homeCards .card h1 {
     color: white;
     font-family: var(--roboto);
     font-size: 20px;
     font-weight: bold;
 }
+
 .homeCards .card p {
     padding: 10px 0;
     color: white;
@@ -151,6 +156,7 @@ body {
     font-size: 14px;
     font-weight: normal;
 }
+
 .homeCards .card button {
     align-self: flex-end;
     width: 130px;
@@ -167,7 +173,7 @@ body {
     font-family: var(--roboto);
     font-size: 13px;
     font-weight: bold;
-} 
+}
 
 /* cosmos */
 
@@ -299,10 +305,10 @@ body {
 
 .intro .content h5 {
     color: var(--lightb2);
-    text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 16px;
     margin-bottom: 16px;
+    font-weight: bold;
 }
 
 .intro .content h1 {
@@ -453,53 +459,187 @@ body {
 /* Team section */
 .team {
     margin: 40px auto;
-  text-align: center;
-  font-family: var(--roboto);
+    text-align: center;
+    font-family: var(--roboto);
 }
 
-.team  h2 {
-  color: var(--lightb2);
-  font-size: 40px;
-  margin: 40px auto;
-  letter-spacing: 1px;
+.team h2 {
+    color: var(--lightb2);
+    font-size: 40px;
+    margin: 40px auto;
+    letter-spacing: 1px;
 }
 
 .team .team-members {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
 }
 
 .team .member {
-  border-radius: 30px;
-  width: 320px;
-  position: relative;
+    border-radius: 30px;
+    width: 320px;
+    position: relative;
 }
 
 .team .member img {
-  height: 400px;
+    height: 400px;
 }
 
 .team .info {
-  background-color: #fff;
-  border-radius: 20px;
-  padding: 4px 10px;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  text-align: left;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 4px 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    text-align: left;
 }
 
 .team .info h4 {
-  color: #00245d;
-  font-size: 18px;
-  margin-bottom: 4px;
+    color: #00245d;
+    font-size: 18px;
+    margin-bottom: 4px;
 }
 
 .team .info p {
-  color: #000;
-  font-size: 15px;
+    color: #000;
+    font-size: 15px;
+}
+
+/* missions page */
+/* title */
+.missionsTitle, .planetsTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+    margin: 100px auto 40px auto;
+    font-family: var(--roboto);
+    text-align: center;
+}
+
+.missionsTitle p, .planetsTitle p {
+    font-size: 20px;
+    margin: 0;
+    color: var(--lightb2);
+    font-weight: bold;
+
+}
+
+.missionsTitle h1, .planetsTitle h1 {
+    font-size: 40px;
+    margin: 0px;
+    max-width: 800px;
+}
+
+/* missions table list */
+.missions-section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: #ffffff;
+    font-family: var(--roboto);
+}
+
+.container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.section-title {
+    font-size: 28px;
+    line-height: 34px;
+    margin: 0 0 16px 0;
+    color: #111827;
+}
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.missions-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+    color: #111827;
+}
+
+.missions-table thead th {
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 600;
+    color: #111827;
+}
+.missions-table thead th:last-child{
+    text-align: right;
+}
+
+.missions-table tbody tr {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.missions-table tbody tr:hover {
+    background-color: #f9fafb;
+}
+
+.missions-table td {
+    padding: 16px 12px;
+    vertical-align: top;
+}
+
+.missions-table td.cover {
+    width: 200px;
+}
+
+.cover-thumb {
+    width: 160px;
+    height: 100px;
+    display: block;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.mission-name {
+    display: inline-block;
+    font-size: 18px;
+    line-height: 24px;
+    color: #0353A4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.mission-name:hover {
+    text-decoration: underline;
+}
+
+.mission-agency {
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 18px;
+    color: #6b7280;
+    letter-spacing: 0.2px;
+}
+
+.objective {
+    width: 480px;
+    color: #374151;
+}
+
+.launch {
+    width: 180px;
+    text-align: right;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #111827;
 }
