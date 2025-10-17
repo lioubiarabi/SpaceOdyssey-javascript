@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/icons/favicon.png" sizes="32x32" />
+    <title>Space Odyssey</title>
+    <link rel="stylesheet" href="./assets/style.css" />
+</head>
+
+<body>
+    <header class="main-header">
+        <img class="logo" src="./assets/images/logo.png" />
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="missions.html">Missions</a></li>
+                <li><a href="planets.html">Planets</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contact-section">
+        <div class="contact-wrap">
+            <div class="contact-left">
+                <div class="contact-left-overlay">
+                    <h2 class="contact-heading">Contact Us</h2>
+                    <p class="contact-sub">Say something to start a live chat</p>
+
+                    <div class="contact-items">
+                        <div class="contact-item"><img src="./assets/icons/phone.png" /> +1012 3456 789</div>
+                        <div class="contact-item"><img src="./assets/icons/email.png" /> demo@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-right">
+                <form class="contact-form">
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="firstName" class="label">First Name</label>
+                            <input id="firstName" name="firstName" type="text" class="input">
+                        </div>
+                        <div class="field">
+                            <label for="lastName" class="label">Last Name</label>
+                            <input id="lastName" name="lastName" type="text" class="input">
+                        </div>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="email" class="label">Email</label>
+                            <input id="email" name="email" type="email" class="input">
+                        </div>
+                        <div class="field">
+                            <label for="phone" class="label">Phone Number</label>
+                            <input id="phone" name="phone" type="tel" class="input">
+                        </div>
+                    </div>
+
+                    <fieldset class="subject-group">
+                        <legend class="legend">Select Subject?</legend>
+                        <label class="radio">
+                            <input type="radio" name="subject" value="General Inquiry" checked>
+                            <span>General Inquiry</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="subject" value="Support">
+                            <span>Support</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="subject" value="Partnership">
+                            <span>Partnership</span>
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="subject" value="Press">
+                            <span>Press</span>
+                        </label>
+                    </fieldset>
+
+                    <div class="field">
+                        <label for="message" class="label">Message</label>
+                        <textarea id="message" name="message" rows="5" class="textarea"
+                            placeholder="Write your message.."></textarea>
+                    </div>
+
+                    <div class="actions">
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
