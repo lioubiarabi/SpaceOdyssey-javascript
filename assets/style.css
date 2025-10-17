@@ -489,7 +489,7 @@ body {
 .team .info {
     background-color: #fff;
     border-radius: 20px;
-    padding: 4px 10px;
+    padding: 4px 10px ;
     position: absolute;
     bottom: 20px;
     left: 50%;
@@ -500,13 +500,14 @@ body {
 
 .team .info h4 {
     color: #00245d;
-    font-size: 18px;
-    margin-bottom: 4px;
+    font-size: 25px;
+    margin: 5px;
 }
 
 .team .info p {
     color: #000;
     font-size: 15px;
+    margin: 8px;
 }
 
 /* missions page */
