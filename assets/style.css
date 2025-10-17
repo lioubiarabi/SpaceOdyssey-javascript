@@ -1012,3 +1012,67 @@ body {
 .cq-link:hover {
     color: #1d4ed8;
 }
+
+/* success message */
+
+.success-section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background-color: #ffffff;
+}
+
+.success-card {
+    width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 48px 40px 56px 40px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.20);
+    text-align: center;
+}
+
+.success-banner {
+    display: block;
+    width: 780px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #0b0b0b;
+    color: #ffffff;
+    border-radius: 18px;
+    padding: 22px 24px;
+    font-family: var(--roboto);
+    font-size: 28px;
+    line-height: 34px;
+    letter-spacing: 0.2px;
+}
+
+.success-note {
+    margin-top: 18px;
+    margin-bottom: 28px;
+    color: #374151;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.success-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 56px;
+    background: #ffffff;
+    color: #0b0b0b;
+    border: 2px solid #0b0b0b;
+    border-radius: 14px;
+    font-size: 22px;
+    text-decoration: none;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.10);
+    transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.success-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0px 8px 18px rgba(0, 0, 0, 0.16);
+}
