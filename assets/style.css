@@ -512,7 +512,8 @@ body {
 
 /* missions page */
 /* title */
-.missionsTitle, .planetsTitle {
+.missionsTitle,
+.planetsTitle {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -523,7 +524,8 @@ body {
     text-align: center;
 }
 
-.missionsTitle p, .planetsTitle p {
+.missionsTitle p,
+.planetsTitle p {
     font-size: 20px;
     margin: 0;
     color: var(--lightb2);
@@ -531,7 +533,8 @@ body {
 
 }
 
-.missionsTitle h1, .planetsTitle h1 {
+.missionsTitle h1,
+.planetsTitle h1 {
     font-size: 40px;
     margin: 0px;
     max-width: 800px;
@@ -579,7 +582,8 @@ body {
     font-weight: 600;
     color: #111827;
 }
-.missions-table thead th:last-child{
+
+.missions-table thead th:last-child {
     text-align: right;
 }
 
@@ -642,4 +646,80 @@ body {
     white-space: nowrap;
     font-weight: 600;
     color: #111827;
+}
+
+/* planets */
+.planets-section {
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.planets-container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.planets-title {
+    margin: 0 0 20px 0;
+    font-size: 28px;
+    line-height: 34px;
+    color: #0f172a;
+    font-family: var(--roboto);
+}
+
+.planets-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 22px;
+}
+
+.planet-card {
+    background-color: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.planet-image-ring {
+    width: 150px;
+    height: 150px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 100px;
+    border: 3px solid var(--lightb2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f1f5f9;
+}
+
+.planet-image {
+    width: 130px;
+    height: 130px;
+    border-radius: 100px;
+    object-fit: cover;
+    display: block;
+}
+
+.planet-name {
+    margin: 14px 0 8px 0;
+    font-size: 24px;
+    line-height: 24px;
+    color: var(--lightb2);
+    font-weight: 700;
+    font-family: var(--polta);
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.planet-text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 22px;
+    color: #334155;
 }
