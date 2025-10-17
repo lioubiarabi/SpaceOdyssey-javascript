@@ -114,13 +114,13 @@ body {
 }
 
 /* cards */
-/* .cards {
+ .homeCards {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 25px auto;
 }
-.cards .card {
+.homeCards .card {
     border-radius: 24px;
     width: 325px;
     height: 280px;
@@ -130,28 +130,28 @@ body {
     background-position: center;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5);
 }
-.cards .card:last-child{
+.homeCards .card:last-child{
     margin-right: 0;
 }
-.cards .card .card-content {
+.homeCards .card .card-content {
     padding: 25px 20px;
     display: flex;
     flex-direction: column;
 }
-.cards .card h1 {
+.homeCards .card h1 {
     color: white;
     font-family: var(--roboto);
     font-size: 20px;
     font-weight: bold;
 }
-.cards .card p {
+.homeCards .card p {
     padding: 10px 0;
     color: white;
     font-family: var(--polta);
     font-size: 14px;
     font-weight: normal;
 }
-.cards .card button {
+.homeCards .card button {
     align-self: flex-end;
     width: 130px;
     padding: 10px 25px;
@@ -161,13 +161,13 @@ body {
     box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, 0.5);
 }
 
-.cards .card button a {
+.homeCards .card button a {
     text-decoration: none;
     color: black;
     font-family: var(--roboto);
     font-size: 13px;
     font-weight: bold;
-} */
+} 
 
 /* cosmos */
 
@@ -448,4 +448,58 @@ body {
     line-height: 24px;
     letter-spacing: 1px;
     font-family: var(--polta);
+}
+
+/* Team section */
+.team {
+    margin: 40px auto;
+  text-align: center;
+  font-family: var(--roboto);
+}
+
+.team  h2 {
+  color: var(--lightb2);
+  font-size: 40px;
+  margin: 40px auto;
+  letter-spacing: 1px;
+}
+
+.team .team-members {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.team .member {
+  border-radius: 30px;
+  width: 320px;
+  position: relative;
+}
+
+.team .member img {
+  height: 400px;
+}
+
+.team .info {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 4px 10px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  text-align: left;
+}
+
+.team .info h4 {
+  color: #00245d;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.team .info p {
+  color: #000;
+  font-size: 15px;
 }
