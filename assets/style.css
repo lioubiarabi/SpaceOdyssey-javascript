@@ -286,6 +286,115 @@ body {
     font-weight: bold;
 }
 
+/* iotd section: image of the day */
+.iotd {
+    display: flex;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    background-color: #ffffff;
+}
+
+.iotd-wrap {
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 620px 540px;
+    column-gap: 20px;
+    align-items: start;
+}
+
+.iotd-left {
+    padding-top: 8px;
+}
+
+.iotd-kicker {
+    margin: 0px 0px 45px 0px;
+    font-family: var(--roboto);
+    font-size: 48px;
+    line-height: 52px;
+    color: #0a0a0a;
+}
+
+.iotd-title {
+    display: inline-block;
+    font-size: 36px;
+    line-height: 42px;
+    color: #0a1633;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.iotd-text {
+    font-size: 16px;
+    line-height: 24px;
+    color: #1f2937;
+    margin: 0px 0px 16px 0px;
+    max-width: 600px;
+}
+
+.iotd-credit {
+    font-size: 14px;
+    line-height: 18px;
+    color: #6b7280;
+    margin: 8px 0px 70px 0px;
+}
+
+.iotd-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    padding-left: 28px;
+    padding-right: 28px;
+    border-radius: 28px;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid #0a0a0a;
+    box-shadow: 0px 6px 22px rgba(0, 0, 0, 0.15);
+    color: black;
+    text-decoration: none;
+}
+
+.iotd-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iotd-image-frame {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0px 10px 28px rgba(0, 0, 0, 0.20);
+    background: #000000;
+}
+
+.iotd-view {
+    width: 540px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    padding-top: 12px;
+}
+
+.view-link {
+    font-size: 18px;
+    line-height: 24px;
+    color: #0a0a0a;
+    text-decoration: none;
+    border-bottom: 1px solid #0a0a0a;
+    padding-bottom: 2px;
+}
+
+.view-icon {
+    font-size: 20px;
+    color: #0a0a0a;
+}
+
+
+
 /* About */
 /* Intro */
 .intro {
@@ -489,7 +598,7 @@ body {
 .team .info {
     background-color: #fff;
     border-radius: 20px;
-    padding: 4px 10px ;
+    padding: 4px 10px;
     position: absolute;
     bottom: 20px;
     left: 50%;
