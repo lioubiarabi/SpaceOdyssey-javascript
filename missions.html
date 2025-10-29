@@ -28,6 +28,35 @@
         <h1>This list details ten famous and recent space missions</h1>
     </div>
 
+    <section class="toolbar">
+        <h1 class="toolbar-title">Missions</h1>
+
+        <button class="toolbar-button">Add New</button>
+
+        <div class="toolbar-filter">
+            <select id="agency-filter" class="toolbar-select">
+                <option value="" disabled selected>Agency</option>
+                <option value="option1">all</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+
+        <div class="toolbar-filter">
+            <select id="year-filter" class="toolbar-select">
+                <option value="" disabled selected>Year</option>
+                <option value="option1">All</option>
+                <option value="option2">Option 2</option>
+                <option value="option3">Option 3</option>
+            </select>
+        </div>
+
+        <div class="toolbar-search">
+            <input type="text" placeholder="search" class="search-input">
+            <img src="./assets/icons/search.png" class="search-icon">
+        </div>
+    </section>
+
     <section class="missions-section">
         <div class="container">
             <div class="table-wrap">
