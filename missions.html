@@ -40,38 +40,38 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="addMissionModalLabel">New message</h5>
+                        <h5 class="modal-title" id="addMissionModalLabel">Add New Mission</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="addNewMissionForm">
                             <div class="form-group">
                                 <label for="newMissionName" class="col-form-label">Mission Name</label>
-                                <input type="text" class="form-control" id="newMissionName">
+                                <input type="text" class="form-control" id="newMissionName" required>
                             </div>
                             <div class="form-group">
                                 <label for="newMissionAgency" class="col-form-label">Agency</label>
-                                <input type="text" class="form-control" id="newMissionAgency">
+                                <input type="text" class="form-control" id="newMissionAgency" required>
                             </div>
                             <div class="form-group">
                                 <label for="newMissionObjective" class="col-form-label">Objective:</label>
-                                <textarea class="form-control" id="newMissionObjective"></textarea>
+                                <textarea class="form-control" id="newMissionObjective" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="newMissionDate">Launch Date:</label>
-                                <input type="date" class="form-control" id="newMissionDate">
+                                <input type="date" class="form-control" id="newMissionDate" required>
                             </div>
                             <div class="form-group">
                                 <label for="newMissionCover">Mission cover:</label>
-                                <input type="file" class="form-control" id="newMissionCover">
+                                <input type="file" class="form-control" id="newMissionCover" required>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-outline-primary">add mission</button>
+                        <button type="button" class="btn btn-outline-primary" id="addNewMissionButton" disabled>add mission</button>
                     </div>
                 </div>
             </div>

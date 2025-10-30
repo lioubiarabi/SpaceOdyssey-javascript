@@ -54,8 +54,12 @@ function putItems(items) {
 
 }
 
+// check if new mission modal are non empty
+var form = document.getElementById("addNewMissionForm");
+var addNewMissionButton = document.getElementById("addNewMissionButton");
+form.addEventListener("input", () => {
+    // disable the button until the user fill the form
+    button.disabled = true;
+    form.checkValidity() && (button.disabled = false);
+})
 
-
-function search() {
-
-}
