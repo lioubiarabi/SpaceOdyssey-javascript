@@ -1,36 +1,57 @@
 //get the missions from localStorage
 let missions = JSON.parse(localStorage.getItem("missions"));
+let agencies = [], years = [];
 
 if (missions) {
     putItems(missions);
+    setFilters(missions);
 } else {
     (async () => {
-    const getMissions = await fetch("./assets/missions.json");
-    const data = await getMissions.json();
-    putItems(data);
-    
-    //add the missions to the main storage
+        const getMissions = await fetch("./assets/missions.json");
+        const data = await getMissions.json();
+        missions = data;
+        putItems(data);
+        setFilters(data);
+        //add the missions to the main storage
         localStorage.setItem("missions", JSON.stringify(data));
-}) ();
+    })();
 }
 
-function putItems(data) {
-    for (let i = 0; i < data.length; i++) {
+function putItems(items) {
+    // check if the agency in filters and add elements in the table list
+    items.map(data => {
+
+        // check if the agency exist in agencies array
+        data.agency.split("/").map(agency => {
+            if (!agencies.includes(agency)) agencies.push(agency);
+        });
+        // check if the year exist in years array
+        let year = new Date(data.launchDate).getFullYear();
+        if (!years.includes(year)) years.push(year);
+        
+
+        //render the items in the page
         document.getElementById("missionsTable").innerHTML += `<tr>
                                 <td class="cover">
-                                    <img class="cover-thumb" src="${data[i].image}">
+                                    <img class="cover-thumb" src="${data.image}">
                                 </td>
                                 <td class="mission">
                                     <div class="missionInfo">
-                                        <span class="mission-name">${data[i].name} </span>
-                                        <div class="mission-agency">${data[i].agency}</div>
+                                        <span class="mission-name">${data.name} </span>
+                                        <div class="mission-agency">${data.agency}</div>
                                     </div>
-                                    <div class="missionAction"><img src="${data[i].favorite? "./assets/icons/star-full.png" : "./assets/icons/star.png" }" id="favorite-${data[i].id}"  class="favorite"><img src="./assets/icons/edit.png" class="edit"></div>
+                                    <div class="missionAction"><img src="${data.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" id="favorite-${data.id}"  class="favorite"><img src="./assets/icons/edit.png" class="edit"><img src="./assets/icons/delete.png" class="delete"></div>
                                 </td>
                                 <td class="objective">
-                                    ${data[i].objective}
+                                    ${data.objective}
                                 </td>
-                                <td class="launch">${data[i].launchDate}</td>
+                                <td class="launch">${data.launchDate}</td>
                             </tr>`;
-    }
+    });
+
+}
+
+
+function search() {
+
 }
