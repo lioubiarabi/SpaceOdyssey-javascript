@@ -2,16 +2,15 @@
 let missions = JSON.parse(localStorage.getItem("missions"));
 let agencies = [], years = [];
 
+
 if (missions) {
     putItems(missions);
-    setFilters(missions);
 } else {
     (async () => {
         const getMissions = await fetch("./assets/missions.json");
         const data = await getMissions.json();
         missions = data;
         putItems(data);
-        setFilters(data);
         //add the missions to the main storage
         localStorage.setItem("missions", JSON.stringify(data));
     })();
@@ -19,16 +18,16 @@ if (missions) {
 
 function putItems(items) {
     // check if the agency in filters and add elements in the table list
-    items.map(data => {
+    items.forEach(data => {
 
         // check if the agency exist in agencies array
-        data.agency.split("/").map(agency => {
+        data.agency.split("/").forEach(agency => {
             if (!agencies.includes(agency)) agencies.push(agency);
         });
         // check if the year exist in years array
         let year = new Date(data.launchDate).getFullYear();
         if (!years.includes(year)) years.push(year);
-        
+
 
         //render the items in the page
         document.getElementById("missionsTable").innerHTML += `<tr>
@@ -49,7 +48,12 @@ function putItems(items) {
                             </tr>`;
     });
 
+    //render the filters options
+    agencies.sort().forEach(agency => document.getElementById("agency-filter").innerHTML += `<option value="${agency}">${agency}</option>`);
+    years.sort((a, b) => a - b).forEach(year => document.getElementById("year-filter").innerHTML += `<option value="${year}">${year}</option>`);
+
 }
+
 
 
 function search() {
