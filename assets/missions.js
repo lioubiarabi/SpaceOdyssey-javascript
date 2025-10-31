@@ -42,7 +42,7 @@ function putItems(items) {
                                         <span class="mission-name">${item.name} </span>
                                         <div class="mission-agency">${item.agency}</div>
                                     </div>
-                                    <div class="missionAction"><img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favorite(${item.id}, ${!item.favorite})"  class="favorite"><img src="./assets/icons/edit.png"  class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${item.id})" class="delete"></div>
+                                    <div class="missionAction"><img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favorite(${item.id}, ${!item.favorite})"  class="favorite"><img src="./assets/icons/edit.png" onclick="edit(${item.id})" class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${item.id})" class="delete"></div>
                                 </td>
                                 <td class="objective">
                                     ${item.objective}
@@ -89,7 +89,7 @@ addNewMissionButton.addEventListener("click", () => {
 
     //clean the form and close the modale
     form.reset();
-    $('#addMissionModal').modal('hide');
+    $('#missionModal').modal('hide');
     addNewMissionButton.disabled = true;
 
 })
@@ -114,4 +114,8 @@ function favorite(id, action) {
 
     // update localStorage
     localStorage.setItem("missions", JSON.stringify(missions));
+}
+
+function edit(id) {
+    
 }
