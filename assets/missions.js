@@ -4,13 +4,13 @@ let agencies = [], years = [];
 
 
 if (missions) {
-    putItems(missions);
+    putItems(missions.items);
 } else {
     (async () => {
         const getMissions = await fetch("./assets/missions.json");
         const data = await getMissions.json();
         missions = data;
-        putItems(data);
+        putItems(data.items);
         //add the missions to the main storage
         localStorage.setItem("missions", JSON.stringify(data));
     })();
@@ -66,7 +66,7 @@ form.addEventListener("input", () => {
 // add new mission
 addNewMissionButton.addEventListener("click", () => {
     var inputs = form.querySelectorAll(".addNewMissionForm");
-    missions.push({
+    missions.items.push({
         "id": missions.length,
         "name": inputs[0].value,
         "agency": inputs[1].value,
@@ -74,5 +74,6 @@ addNewMissionButton.addEventListener("click", () => {
         "launchDate": inputs[3].value,
         "image": URL.createObjectURL(inputs[4].files[0]) 
     });
+    
 })
 
