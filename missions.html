@@ -33,7 +33,8 @@
     <section class="toolbar">
         <h1 class="toolbar-title">Missions</h1>
 
-        <button class="toolbar-button" data-toggle="modal" data-target="#missionModal" onclick="document.getElementById('missionModalLabel').innerText = 'Add New Mission'">Add New</button>
+        <button class="toolbar-button" data-toggle="modal" data-target="#missionModal" onclick="newMission()">Add
+            New</button>
 
         <div class="modal fade" id="missionModal" tabindex="-1" role="dialog" aria-labelledby="missionModalLabel"
             aria-hidden="true">
@@ -46,32 +47,34 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="addNewMissionForm">
+                        <form id="missionForm">
                             <div class="form-group">
                                 <label for="newMissionName" class="col-form-label">Mission Name</label>
-                                <input type="text" class="form-control addNewMissionForm" id="newMissionName" required>
+                                <input type="text" class="form-control missionForm" id="newMissionName" required>
                             </div>
                             <div class="form-group">
                                 <label for="newMissionAgency" class="col-form-label">Agency</label>
-                                <input type="text" class="form-control addNewMissionForm" id="newMissionAgency" required>
+                                <input type="text" class="form-control missionForm" id="newMissionAgency" required>
                             </div>
                             <div class="form-group">
                                 <label for="newMissionObjective" class="col-form-label">Objective:</label>
-                                <textarea class="form-control addNewMissionForm" id="newMissionObjective" required></textarea>
+                                <textarea class="form-control missionForm" id="newMissionObjective" required></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="newMissionDate">Launch Date:</label>
-                                <input type="date" class="form-control addNewMissionForm" id="newMissionDate" required>
+                                <input type="date" class="form-control missionForm" id="newMissionDate" required>
                             </div>
                             <div class="form-group">
-                                <label for="newMissionCover">Mission cover:</label>
-                                <input type="file" class="form-control addNewMissionForm" id="newMissionCover" accept="image/*" required>
+                                <label for="newMissionCover" id="newMissionCoverLabel">Mission cover:</label>
+                                <input type="file" class="form-control missionForm" id="newMissionCover"
+                                    accept="image/*" required>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-outline-primary" id="addNewMissionButton" disabled>add mission</button>
+                        <button type="button" class="btn btn-outline-primary" id="addNewMissionButton" disabled>add
+                            mission</button>
                     </div>
                 </div>
             </div>
@@ -110,7 +113,7 @@
                         </tr>
                     </thead>
                     <tbody id="missionsTable">
-                        
+
                     </tbody>
                 </table>
             </div>
@@ -181,6 +184,16 @@
 
 
     <script src="./assets/missions.js"></script>
+    <script>
+        function newMission() {
+            // change the modal title to add new mission when click add new button and clear the form
+            document.getElementById('missionModalLabel').innerText = 'Add New Mission';
+            document.getElementById("newMissionCoverLabel").innerText = "Mission cover:";
+            document.getElementById('newMissionCover').required = true;
+            document.getElementById("missionForm").reset();
+
+        }
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
