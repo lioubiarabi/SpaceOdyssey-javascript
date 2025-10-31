@@ -110,7 +110,9 @@ function favoriteAdd(id) {
         if(item.id == id) item.favorite = true;
         return true;
     });
-    console.log(missions)
     putItems(missions.items)
+
+    // update localStorage
+    localStorage.setItem("missions", JSON.stringify(missions));
 }
 
