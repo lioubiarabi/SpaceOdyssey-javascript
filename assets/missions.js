@@ -58,7 +58,7 @@ function putItems(items) {
 }
 
 // check if new mission modal are non empty
-var form = document.getElementById("addNewMissionForm");
+var form = document.getElementById("missionForm");
 var addNewMissionButton = document.getElementById("addNewMissionButton");
 form.addEventListener("input", () => {
     // disable the button until the user fill the form
@@ -69,7 +69,7 @@ form.addEventListener("input", () => {
 
 // add new mission
 addNewMissionButton.addEventListener("click", () => {
-    var inputs = form.querySelectorAll(".addNewMissionForm");
+    var inputs = form.querySelectorAll(".missionForm");
 
     // add the mission to the missions object
     missions.info.missionsCount++;
@@ -106,10 +106,8 @@ function deleteItem(id) {
 
 function favorite(id, action) {
     // search an item by id then change or add favorite item as true of false
-    missions.items = missions.items.filter(item => {
-        if(item.id == id) item.favorite = action;
-        return true;
-    });
+    var missionIndex = missions.items.findIndex(mission => mission.id === id);
+    missions.items[missionIndex].favorite = action;
     putItems(missions.items)
 
     // update localStorage
@@ -117,5 +115,21 @@ function favorite(id, action) {
 }
 
 function edit(id) {
-    
+
+    // show the modal to edit
+    $('#missionModal').modal('show');
+
+    //fill the modal inputs with the mission value
+    var missionIndex = missions.items.findIndex(mission => mission.id === id);
+    var missionInfo = missions.items[missionIndex];
+    var inputs = form.querySelectorAll(".missionForm");
+    inputs[0].value = missionInfo.name;
+    inputs[1].value = missionInfo.agency;
+    inputs[2].value = missionInfo.objective;
+    inputs[3].value = missionInfo.launchDate;
+
+    // change the modal title and the cover input to not required
+    document.getElementById("missionModalLabel").innerText = "Edit: " + missionInfo.name;
+    document.getElementById("newMissionCoverLabel").innerText = "Mission cover: (not required)";
+    inputs[4].required = false;
 }
