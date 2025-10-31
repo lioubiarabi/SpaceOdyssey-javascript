@@ -82,7 +82,9 @@ addNewMissionButton.addEventListener("click", () => {
     });
     // render the new item in the table
     putItems(missions.items);
-    
+
+    //update the new mission object in localstorage
+    localStorage.setItem("missions", JSON.stringify(missions));
     
 })
 
