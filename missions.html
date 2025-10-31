@@ -73,7 +73,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-outline-primary" id="addNewMissionButton" disabled>add
+                        <button type="button" class="btn btn-outline-primary" id="missionModalButton" disabled>add
                             mission</button>
                     </div>
                 </div>
@@ -184,16 +184,6 @@
 
 
     <script src="./assets/missions.js"></script>
-    <script>
-        function newMission() {
-            // change the modal title to add new mission when click add new button and clear the form
-            document.getElementById('missionModalLabel').innerText = 'Add New Mission';
-            document.getElementById("newMissionCoverLabel").innerText = "Mission cover:";
-            document.getElementById('newMissionCover').required = true;
-            document.getElementById("missionForm").reset();
-
-        }
-    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
