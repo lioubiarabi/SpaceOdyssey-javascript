@@ -42,7 +42,7 @@ function putItems(items) {
                                         <span class="mission-name">${item.name} </span>
                                         <div class="mission-agency">${item.agency}</div>
                                     </div>
-                                    <div class="missionAction"><img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favoriteAdd(${item.id})"  class="favorite"><img src="./assets/icons/edit.png"  class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${item.id})" class="delete"></div>
+                                    <div class="missionAction"><img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favorite(${item.id}, ${!item.favorite})"  class="favorite"><img src="./assets/icons/edit.png"  class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${item.id})" class="delete"></div>
                                 </td>
                                 <td class="objective">
                                     ${item.objective}
@@ -104,10 +104,10 @@ function deleteItem(id) {
 
 }
 
-function favoriteAdd(id) {
-    // search an item by id then change or add favorite item as true
+function favorite(id, action) {
+    // search an item by id then change or add favorite item as true of false
     missions.items = missions.items.filter(item => {
-        if(item.id == id) item.favorite = true;
+        if(item.id == id) item.favorite = action;
         return true;
     });
     putItems(missions.items)
@@ -115,4 +115,3 @@ function favoriteAdd(id) {
     // update localStorage
     localStorage.setItem("missions", JSON.stringify(missions));
 }
-
