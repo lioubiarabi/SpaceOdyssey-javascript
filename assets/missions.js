@@ -64,6 +64,7 @@ form.addEventListener("input", () => {
     // disable the button until the user fill the form
     addNewMissionButton.disabled = true;
     form.checkValidity() && (addNewMissionButton.disabled = false);
+
 })
 
 // add new mission
@@ -85,6 +86,11 @@ addNewMissionButton.addEventListener("click", () => {
 
     //update the new mission object in localstorage
     localStorage.setItem("missions", JSON.stringify(missions));
+
+    //clean the form and close the modale
+    form.reset();
+    $('#addMissionModal').modal('hide');
+    addNewMissionButton.disabled = true;
     
 })
 
