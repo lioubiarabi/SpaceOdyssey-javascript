@@ -98,5 +98,9 @@ function deleteItem(id) {
     // found element by its id, delete it and render the items again
     missions.items = missions.items.filter(item => item.id != id);
     putItems(missions.items)
+
+    // update localStorage
+    localStorage.setItem("missions", JSON.stringify(missions));
+
 }
 
