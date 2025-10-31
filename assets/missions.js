@@ -42,7 +42,7 @@ function putItems(items) {
                                         <span class="mission-name">${data.name} </span>
                                         <div class="mission-agency">${data.agency}</div>
                                     </div>
-                                    <div class="missionAction"><img src="${data.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" id="favorite-${data.id}"  class="favorite"><img src="./assets/icons/edit.png" class="edit"><img src="./assets/icons/delete.png" class="delete"></div>
+                                    <div class="missionAction"><img src="${data.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}"  class="favorite"><img src="./assets/icons/edit.png" class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${data.id})" class="delete"></div>
                                 </td>
                                 <td class="objective">
                                     ${data.objective}
@@ -91,6 +91,12 @@ addNewMissionButton.addEventListener("click", () => {
     form.reset();
     $('#addMissionModal').modal('hide');
     addNewMissionButton.disabled = true;
-    
+
 })
+
+function deleteItem(id) {
+    // found element by its id, delete it and render the items again
+    missions.items = missions.items.filter(item => item.id != id);
+    putItems(missions.items)
+}
 
