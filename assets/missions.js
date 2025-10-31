@@ -21,33 +21,33 @@ function putItems(items) {
      document.getElementById("missionsTable").innerHTML = '';
 
     // check if the agency in filters and add elements in the table list
-    items.forEach(data => {
+    items.forEach(item => {
 
         // check if the agency exist in agencies array
-        data.agency.split("/").forEach(agency => {
+        item.agency.split("/").forEach(agency => {
             if (!agencies.includes(agency)) agencies.push(agency);
         });
         // check if the year exist in years array
-        let year = new Date(data.launchDate).getFullYear();
+        let year = new Date(item.launchDate).getFullYear();
         if (!years.includes(year)) years.push(year);
 
 
         //render the items in the page
         document.getElementById("missionsTable").innerHTML += `<tr>
                                 <td class="cover">
-                                    <img class="cover-thumb" src="${data.image}">
+                                    <img class="cover-thumb" src="${item.image}">
                                 </td>
                                 <td class="mission">
                                     <div class="missionInfo">
-                                        <span class="mission-name">${data.name} </span>
-                                        <div class="mission-agency">${data.agency}</div>
+                                        <span class="mission-name">${item.name} </span>
+                                        <div class="mission-agency">${item.agency}</div>
                                     </div>
-                                    <div class="missionAction"><img src="${data.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}"  class="favorite"><img src="./assets/icons/edit.png" class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${data.id})" class="delete"></div>
+                                    <div class="missionAction"><img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favoriteAdd(${item.id})"  class="favorite"><img src="./assets/icons/edit.png"  class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${item.id})" class="delete"></div>
                                 </td>
                                 <td class="objective">
-                                    ${data.objective}
+                                    ${item.objective}
                                 </td>
-                                <td class="launch">${data.launchDate}</td>
+                                <td class="launch">${item.launchDate}</td>
                             </tr>`;
     });
 
@@ -102,5 +102,15 @@ function deleteItem(id) {
     // update localStorage
     localStorage.setItem("missions", JSON.stringify(missions));
 
+}
+
+function favoriteAdd(id) {
+    // search an item by id then change or add favorite item as true
+    missions.items = missions.items.filter(item => {
+        if(item.id == id) item.favorite = true;
+        return true;
+    });
+    console.log(missions)
+    putItems(missions.items)
 }
 
