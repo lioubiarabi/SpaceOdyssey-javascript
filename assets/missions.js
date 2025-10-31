@@ -59,7 +59,20 @@ var form = document.getElementById("addNewMissionForm");
 var addNewMissionButton = document.getElementById("addNewMissionButton");
 form.addEventListener("input", () => {
     // disable the button until the user fill the form
-    button.disabled = true;
-    form.checkValidity() && (button.disabled = false);
+    addNewMissionButton.disabled = true;
+    form.checkValidity() && (addNewMissionButton.disabled = false);
+})
+
+// add new mission
+addNewMissionButton.addEventListener("click", () => {
+    var inputs = form.querySelectorAll(".addNewMissionForm");
+    missions.push({
+        "id": missions.length,
+        "name": inputs[0].value,
+        "agency": inputs[1].value,
+        "objective": inputs[2].value,
+        "launchDate": inputs[3].value,
+        "image": URL.createObjectURL(inputs[4].files[0]) 
+    });
 })
 
