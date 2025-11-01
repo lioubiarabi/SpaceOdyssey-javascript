@@ -87,7 +87,7 @@ function newMission() {
         missions.items.push({
             "id": missions.info.missionsCount,
             "name": inputs[0].value,
-            "agency": inputs[1].value,
+            "agency": inputs[1].value.toUpperCase().replace(/\s/g, ''),
             "objective": inputs[2].value,
             "launchDate": inputs[3].value,
             "image": URL.createObjectURL(inputs[4].files[0])
@@ -153,7 +153,7 @@ function edit(id) {
         // change the mission info in missions object and render them
         missions.items[missionIndex] = {
             "name": inputs[0].value,
-            "agency": inputs[1].value,
+            "agency": inputs[1].value.toUpperCase().replace(/\s/g, ''),
             "objective": inputs[2].value,
             "launchDate": inputs[3].value,
             "image": inputs[4].files[0] ? URL.createObjectURL(inputs[4].files[0]) : missionInfo.image
