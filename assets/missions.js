@@ -1,6 +1,6 @@
 //get the missions from localStorage
 let missions = JSON.parse(localStorage.getItem("missions"));
-let agencies = [], years = [];
+let agencies = [], years = [], filteredMissions = [];
 
 
 if (missions) {
@@ -19,6 +19,8 @@ if (missions) {
 function putItems(items) {
     // remove all the items in the missions table to render the new item
     document.getElementById("missionsTable").innerHTML = '';
+    document.getElementById("agency-filter").innerHTML = `<option value="" disabled selected>Agency</option> <option value="all">all</option>`;
+    document.getElementById("year-filter").innerHTML = `<option value="" disabled selected>Year</option> <option value="all">all</option>`;
 
     // check if the agency in filters and add elements in the table list
     items.forEach(item => {
@@ -31,9 +33,8 @@ function putItems(items) {
         let year = new Date(item.launchDate).getFullYear();
         if (!years.includes(year)) years.push(year);
 
-
         //render the items in the page
-        document.getElementById("missionsTable").innerHTML += `<tr>
+        document.getElementById("missionsTable").innerHTML += `<tr ${item.hide && 'style="display:none"'}>
                                 <td class="cover">
                                     <img class="cover-thumb" src="${item.image}">
                                 </td>
@@ -119,7 +120,7 @@ function deleteItem(id) {
 
 function favorite(id, action) {
     // search an item by id then change or add favorite item as true of false
-    var missionIndex = missions.items.findIndex(mission => mission.id === id);
+    var missionIndex = missions.items.findIndex(mission => mission.id == id);
     missions.items[missionIndex].favorite = action;
     putItems(missions.items)
 
@@ -133,7 +134,7 @@ function edit(id) {
     $('#missionModal').modal('show');
 
     //fill the modal inputs with the mission value
-    var missionIndex = missions.items.findIndex(mission => mission.id === id);
+    var missionIndex = missions.items.findIndex(mission => mission.id == id);
     var missionInfo = missions.items[missionIndex];
     var inputs = form.querySelectorAll(".missionForm");
     inputs[0].value = missionInfo.name;
@@ -151,7 +152,6 @@ function edit(id) {
     missionModalButton.addEventListener('click', () => {
         // change the mission info in missions object and render them
         missions.items[missionIndex] = {
-            "id": missions.info.missionsCount,
             "name": inputs[0].value,
             "agency": inputs[1].value,
             "objective": inputs[2].value,
@@ -166,3 +166,26 @@ function edit(id) {
 
     })
 }
+
+// filters
+var agencyFilter = document.getElementById("agency-filter"),
+    yearFilter = document.getElementById("year-filter");
+
+function filter() {
+    filteredMissions = [...missions.items];
+    const prevAgency = agencyFilter.value, prevYear = yearFilter.value;
+    // search if the agnecy included in the agencies of each item
+    if (agencyFilter.value != "all") {
+        filteredMissions = missions.items.filter(item => item.agency.includes(agencyFilter.value))
+    }
+    if (yearFilter.value != "all") {
+        filteredMissions = filteredMissions.filter(item => item.launchDate.includes(yearFilter.value))
+    }
+    putItems(filteredMissions);
+    // to keep the filters values so they can work together
+    agencyFilter.value = prevAgency;
+    yearFilter.value = prevYear;
+}
+
+agencyFilter.addEventListener("change", filter);
+yearFilter.addEventListener("change", filter);
