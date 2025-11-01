@@ -169,18 +169,26 @@ function edit(id) {
 
 // filters
 var agencyFilter = document.getElementById("agency-filter"),
-    yearFilter = document.getElementById("year-filter");
+    yearFilter = document.getElementById("year-filter"),
+    searchFilter = document.getElementById("search-filter");
 
 function filter() {
     filteredMissions = [...missions.items];
     const prevAgency = agencyFilter.value, prevYear = yearFilter.value;
     // search if the agnecy included in the agencies of each item
     if (agencyFilter.value != "all") {
-        filteredMissions = missions.items.filter(item => item.agency.includes(agencyFilter.value))
+        filteredMissions = filteredMissions.filter(item => item.agency.includes(agencyFilter.value))
     }
     if (yearFilter.value != "all") {
         filteredMissions = filteredMissions.filter(item => item.launchDate.includes(yearFilter.value))
     }
+    // search filter
+    searchFilter.value && (
+        filteredMissions = filteredMissions.filter(item =>
+            Object.values(item).some(info => String(info).toLowerCase().includes(searchFilter.value.toLowerCase()))
+        )
+    )
+
     putItems(filteredMissions);
     // to keep the filters values so they can work together
     agencyFilter.value = prevAgency;
@@ -189,3 +197,4 @@ function filter() {
 
 agencyFilter.addEventListener("change", filter);
 yearFilter.addEventListener("change", filter);
+searchFilter.addEventListener("input", filter);
