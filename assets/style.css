@@ -1466,3 +1466,17 @@ body {
 .edit , .favorite , .delete {
     cursor: pointer;
 }
+
+.toolbar-favorite {
+    background: var(--lightb);
+    padding: 5px;
+    border: 1.5px solid var(--lightb);
+    border-radius: 8px;
+    cursor: pointer;
+}
+.toolbar-favorite:hover {
+    background: var(--darkb);
+}
+.toolbar-favorite-icon {
+    width: 30px;
+}
