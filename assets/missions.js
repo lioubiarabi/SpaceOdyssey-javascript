@@ -1,6 +1,7 @@
 //get the missions from localStorage
 let missions = JSON.parse(localStorage.getItem("missions"));
 let agencies = [], years = [], filteredMissions = [];
+let favoriteList = false;
 
 
 if (missions) {
@@ -198,3 +199,16 @@ function filter() {
 agencyFilter.addEventListener("change", filter);
 yearFilter.addEventListener("change", filter);
 searchFilter.addEventListener("input", filter);
+
+// favorite list
+var favoriteListButton = document.getElementById("favorite-list");
+var favoriteListIcon = document.getElementById("favorite-icon");
+
+favoriteListButton.addEventListener("click", ()=>{
+    if (!favoriteList) {
+        // render the favorite missions
+        
+    } else {
+        
+    }
+})
