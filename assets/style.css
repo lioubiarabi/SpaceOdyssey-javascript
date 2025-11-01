@@ -1470,7 +1470,7 @@ body {
 .toolbar-favorite {
     background: var(--lightb);
     padding: 5px;
-    border: 1.5px solid var(--lightb);
+    border: 2px solid var(--lightb);
     border-radius: 8px;
     cursor: pointer;
 }

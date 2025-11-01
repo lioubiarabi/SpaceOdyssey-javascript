@@ -204,11 +204,27 @@ searchFilter.addEventListener("input", filter);
 var favoriteListButton = document.getElementById("favorite-list");
 var favoriteListIcon = document.getElementById("favorite-icon");
 
-favoriteListButton.addEventListener("click", ()=>{
+favoriteListButton.addEventListener("click", () => {
     if (!favoriteList) {
         // render the favorite missions
-        
+        let favoriteItems = missions.items.filter(item => item.favorite);
+        putItems(favoriteItems);
+
+        // change the fav button
+        favoriteListButton.style.background = 'white'; 
+        favoriteListIcon.src = "./assets/icons/lightb-star.png";
+
+        favoriteList = true;
+
     } else {
+        // render all the missions;
+        putItems(missions.items);
+
+        // change the fav button
+        favoriteListButton.style.background = 'var(--lightb)'; 
+        favoriteListIcon.src = "./assets/icons/white-star.png";
+
+        favoriteList = false;
         
     }
 })
