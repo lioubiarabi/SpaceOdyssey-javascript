@@ -842,6 +842,9 @@ body {
 }
 
 /* contact us page */
+#alertError {
+    display: none;
+}
 .contact-section {
     margin: 100px auto;
     padding-top: 40px;
@@ -1043,7 +1046,7 @@ body {
     padding-top: 26px;
 }
 
-.btn-primary {
+.contactbtn {
     width: 200px;
     height: 48px;
     background: #111827;
@@ -1056,7 +1059,7 @@ body {
     transition: transform 150ms ease, box-shadow 150ms ease;
 }
 
-.btn-primary:hover {
+.contactbtn:hover {
     transform: translateY(-1px);
     box-shadow: 0px 8px 16px rgba(17, 24, 39, 0.18);
 }
