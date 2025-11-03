@@ -44,7 +44,7 @@ function putItems(items) {
                                         <span class="mission-name">${item.name} </span>
                                         <div class="mission-agency">${item.agency}</div>
                                     </div>
-                                    <div class="missionAction"><img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favorite(${item.id}, ${!item.favorite})"  class="favorite"><img src="./assets/icons/edit.png" onclick="edit(${item.id})" class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${item.id})" class="delete"></div>
+                                    <div class="missionAction"><img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favorite(${item.id}, ${!item.favorite})"  class="favorite"><img src="./assets/icons/edit.png" onclick="edit(${item.id})" class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${item.id}, '${item.name}')" class="delete"></div>
                                 </td>
                                 <td class="objective">
                                     ${item.objective}
@@ -109,13 +109,24 @@ function newMission() {
 }
 
 
-function deleteItem(id) {
-    // found element by its id, delete it and render the items again
-    missions.items = missions.items.filter(item => item.id != id);
-    putItems(missions.items)
+function deleteItem(id, missionName) {
+    //showing the confirmation model
+    $('#confirmationModel').modal('show');
 
-    // update localStorage
-    localStorage.setItem("missions", JSON.stringify(missions));
+    // change the title of the mission in the model
+    document.getElementById("deleteMissionTitle").innerText = missionName;
+
+    document.getElementById("deleteMissionButton").addEventListener("click", () => {
+
+        // found element by its id, delete it and render the items again
+        missions.items = missions.items.filter(item => item.id != id);
+        putItems(missions.items)
+
+        // update localStorage
+        localStorage.setItem("missions", JSON.stringify(missions));
+        $('#confirmationModel').modal('hide');
+    });
+
 
 }
 
@@ -211,7 +222,7 @@ favoriteListButton.addEventListener("click", () => {
         putItems(favoriteItems);
 
         // change the fav button
-        favoriteListButton.style.background = 'white'; 
+        favoriteListButton.style.background = 'white';
         favoriteListIcon.src = "./assets/icons/lightb-star.png";
 
         favoriteList = true;
@@ -221,10 +232,10 @@ favoriteListButton.addEventListener("click", () => {
         putItems(missions.items);
 
         // change the fav button
-        favoriteListButton.style.background = 'var(--lightb)'; 
+        favoriteListButton.style.background = 'var(--lightb)';
         favoriteListIcon.src = "./assets/icons/white-star.png";
 
         favoriteList = false;
-        
+
     }
 })
