@@ -25,9 +25,9 @@
 
     <div class="success-section">
         <div class="success-card">
-            <div class="success-banner">Message sent successfully</div>
-            <p class="success-note">Thanks for your message. We will get back to you soon.</p>
-            <a href="/contact" class="success-btn">Done</a>
+            <div class="success-banner">Thanks you <span id="username"></span></div>
+            <p class="success-note">Message sent successfully. We will get back to you soon.</p>
+            <a href="./index.html" class="success-btn">Done</a>
         </div>
     </div>
 
@@ -132,6 +132,16 @@
         </div>
     </footer>
 
+    <script>
+        const searchParams = new URLSearchParams(window.location.search);
+        const firstName = searchParams.get("firstName");
+        const lastName = searchParams.get("lastName");
+        if (firstName && lastName) {
+            document.getElementById("username").textContent = `${firstName} ${lastName}`;
+        } else {
+            window.open(`./contact.html`, "_self");
+        }
+    </script>
 
 
 </body>

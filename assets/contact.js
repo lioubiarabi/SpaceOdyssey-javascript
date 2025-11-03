@@ -26,7 +26,7 @@ form.addEventListener("submit", (e) => {
 
     if (validate(firstName, /^[a-z]{3,20}$/i) && validate(lastName, /^[a-z]{3,20}$/i) && validate(email, /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/) && validate(phone, /^(\+)?\d{10,}$/) && validate(message, /\S{2,}/)) {
         // redirect to success contact page 
-        window.open(`./success.html?firstName=${firstName.value}&lastName=${lastName.value}&email=${email.value}&phone=${phone.value}&subject=${subject.value}&message=${message.value}`, "_self");
+        window.open(`./success.html?firstName=${firstName.value}&lastName=${lastName.value}`, "_self");
     } else {
         // show error msg
         alertError.textContent = "All fields must be filled in.";
