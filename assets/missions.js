@@ -208,7 +208,7 @@ function filter() {
     // search filter
     searchFilter.value && (
         filteredMissions = filteredMissions.filter(item =>
-            item.name.toLowerCase().includes(searchFilter.value.toLowerCase())
+            Object.values(item).some(val => val.toString().toLowerCase().includes(searchFilter.value.toLowerCase()))
         )
     )
 
