@@ -18,24 +18,28 @@ if (missions) {
 }
 
 function putItems(items) {
-    // remove all the items in the missions table to render the new item
-    document.getElementById("missionsTable").innerHTML = '';
-    document.getElementById("agency-filter").innerHTML = `<option value="" disabled selected>Agency</option> <option value="all">all</option>`;
-    document.getElementById("year-filter").innerHTML = `<option value="" disabled selected>Year</option> <option value="all">all</option>`;
+    if (items.length != 0) {
+        // remove no missions alert if its on
+        document.getElementById("noMissionsAlert").style.display = "none";
 
-    // check if the agency in filters and add elements in the table list
-    items.forEach(item => {
+        // remove all the items in the missions table to render the new item
+        document.getElementById("missionsTable").innerHTML = '';
+        document.getElementById("agency-filter").innerHTML = `<option value="" disabled selected>Agency</option> <option value="all">all</option>`;
+        document.getElementById("year-filter").innerHTML = `<option value="" disabled selected>Year</option> <option value="all">all</option>`;
 
-        // check if the agency exist in agencies array
-        item.agency.split("/").forEach(agency => {
-            if (!agencies.includes(agency)) agencies.push(agency);
-        });
-        // check if the year exist in years array
-        let year = new Date(item.launchDate).getFullYear();
-        if (!years.includes(year)) years.push(year);
+        // check if the agency in filters and add elements in the table list
+        items.forEach(item => {
 
-        //render the items in the page
-        document.getElementById("missionsTable").innerHTML += `<tr ${item.hide && 'style="display:none"'}>
+            // check if the agency exist in agencies array
+            item.agency.split("/").forEach(agency => {
+                if (!agencies.includes(agency)) agencies.push(agency);
+            });
+            // check if the year exist in years array
+            let year = new Date(item.launchDate).getFullYear();
+            if (!years.includes(year)) years.push(year);
+
+            //render the items in the page
+            document.getElementById("missionsTable").innerHTML += `<tr ${item.hide && 'style="display:none"'}>
                                 <td class="cover">
                                     <img class="cover-thumb" src="${item.image}">
                                 </td>
@@ -51,12 +55,19 @@ function putItems(items) {
                                 </td>
                                 <td class="launch">${item.launchDate}</td>
                             </tr>`;
-    });
+        });
 
-    //render the filters options
-    agencies.sort().forEach(agency => document.getElementById("agency-filter").innerHTML += `<option value="${agency}">${agency}</option>`);
-    years.sort((a, b) => a - b).forEach(year => document.getElementById("year-filter").innerHTML += `<option value="${year}">${year}</option>`);
+        //render the filters options
+        agencies.sort().forEach(agency => document.getElementById("agency-filter").innerHTML += `<option value="${agency}">${agency}</option>`);
+        years.sort((a, b) => a - b).forEach(year => document.getElementById("year-filter").innerHTML += `<option value="${year}">${year}</option>`);
 
+    }
+    else {
+        // clean mission table list
+        document.getElementById("missionsTable").innerHTML = '';
+        // show there no missions alert
+         document.getElementById("noMissionsAlert").style.display = "block";
+    }
 }
 
 // check if new mission modal are non empty

@@ -622,6 +622,11 @@ body {
 
 /* missions page */
 /* title */
+.alert-noMissions {
+    width: 90%;
+    margin: 20px auto;
+    display: none;
+}
 .missionsTitle,
 .planetsTitle {
     display: flex;
