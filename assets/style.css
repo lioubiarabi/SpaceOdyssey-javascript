@@ -1510,7 +1510,7 @@ body {
     height: 100vw;
     background: #fff;
     padding: 20px;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.10);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.20);
 }
 
 .head-favorite-list {
@@ -1518,7 +1518,56 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 .head-favorite-list img {
     width: 24px;
     height: 24px;
+}
+
+.fm {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 20px;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.20);
+}
+
+.fm .fm-image {
+    width: 230px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.fm .fm-image img {
+    width: 100%;
+}
+
+.fm .fm-content h4 {
+    font-weight: 600;
+    color: var(--darkb2);
+}
+
+.fm .fm-content {
+    width: 300px;
+}
+
+.fm .fm-content .fm-objective {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 300px;
+}
+
+.fm .date-agency {}
+
+.fm .date-agency .fm-date {}
+
+.fm .date-agency .fm-agency {
+    font-weight: 500;
+    color: var(--darkb);
+
 }
