@@ -20,6 +20,7 @@ function putItems(items) {
     if (items.length != 0) {
         // remove no missions alert if its on
         document.getElementById("noMissionsAlert").style.display = "none";
+        document.getElementById("noFavoriteMissionsAlert").style.display = "none";
 
         // remove all the items in the missions table to render the new item
         document.getElementById("missionsTable").innerHTML = '';
@@ -68,12 +69,12 @@ function putItems(items) {
         years.sort((a, b) => a - b).forEach(year => document.getElementById("year-filter").innerHTML += `<option value="${year}">${year}</option>`);
 
         // render the favorite misions in favorite missions bar: (update auto when any changes happend)
-        let favMissions = missions.items.filter(item=>item.favorite);
-        if (!favMissions.length) {
+        let favMissions = missions.items.filter(item => item.favorite);
+        if (favMissions.length == 0) {
             document.getElementById("noFavoriteMissionsAlert").style.display = "block";
             return;
         }
-        
+
         for (const item of favMissions) {
             document.getElementById("fms-list").innerHTML += `
                                         <div class="fm">
@@ -125,6 +126,7 @@ function newMission() {
     missionModalButton.disabled = true;
     document.getElementById('missionModalLabel').innerText = 'Add New Mission';
     document.getElementById("newMissionCoverLabel").innerText = "Mission cover:";
+    missionModalButton.innerText = "add new";
     document.getElementById('newMissionCover').required = true;
     document.getElementById("missionForm").reset();
 
@@ -208,6 +210,7 @@ function edit(id) {
     missionModalButton.disabled = false;
     document.getElementById("missionModalLabel").innerText = "Edit: " + missionInfo.name;
     document.getElementById("newMissionCoverLabel").innerText = "Mission cover: (not required)";
+    missionModalButton.innerText = "edit mission";
     inputs[4].required = false;
 
     // set the button to edit function
@@ -269,12 +272,6 @@ var closeFavoriteListIcon = document.getElementById("closeFmsIcon");
 // show or hide the favorite missions
 favoriteListIcon.addEventListener('click', function showFavorite() {
     favoriteBar.classList.remove("close-fms");
-
-    //getting the favorite missions
-    let favMissions = missions.items.filter(item => item.favorite);
-    if (favMissions.length == 0) {
-
-    }
 })
 closeFavoriteListIcon.addEventListener('click', () => {
     favoriteBar.classList.add("close-fms");
