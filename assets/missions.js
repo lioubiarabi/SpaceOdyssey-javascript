@@ -23,6 +23,7 @@ function putItems(items) {
 
         // remove all the items in the missions table to render the new item
         document.getElementById("missionsTable").innerHTML = '';
+        document.getElementById("fms-list").innerHTML = '';
         document.getElementById("agency-filter").innerHTML = `<option value="" disabled selected>Agency</option> <option value="all">all</option>`;
         document.getElementById("year-filter").innerHTML = `<option value="" disabled selected>Year</option> <option value="all">all</option>`;
 
@@ -47,18 +48,52 @@ function putItems(items) {
                                         <span class="mission-name">${item.name} </span>
                                         <div class="mission-agency">${item.agency}</div>
                                     </div>
-                                    <div class="missionAction"><img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favorite(${item.id}, ${!item.favorite})"  class="favorite"><img src="./assets/icons/edit.png" onclick="edit(${item.id})" class="edit"><img src="./assets/icons/delete.png" onclick="deleteItem(${item.id}, '${item.name}')" class="delete"></div>
+                                    <div class="missionAction">
+                                        <img src="${item.favorite ? "./assets/icons/star-full.png" : "./assets/icons/star.png"}" onclick="favorite(${item.id}, ${!item.favorite})"  class="favorite">
+                                        <img src="./assets/icons/edit.png" onclick="edit(${item.id})" class="edit">
+                                        <img src="./assets/icons/delete.png" onclick="deleteItem(${item.id}, '${item.name}')" class="delete">
+                                    </div>
                                 </td>
                                 <td class="objective">
                                     ${item.objective}
                                 </td>
                                 <td class="launch">${item.launchDate}</td>
                             </tr>`;
+
+
         });
 
         //render the filters options
         agencies.sort().forEach(agency => document.getElementById("agency-filter").innerHTML += `<option value="${agency}">${agency}</option>`);
         years.sort((a, b) => a - b).forEach(year => document.getElementById("year-filter").innerHTML += `<option value="${year}">${year}</option>`);
+
+        // render the favorite misions in favorite missions bar: (update auto when any changes happend)
+        let favMissions = missions.items.filter(item=>item.favorite);
+        
+        for (const item of favMissions) {
+            document.getElementById("fms-list").innerHTML += `
+                                        <div class="fm">
+                                                <div class="fm-image">
+                                                    <img src="${item.image}">
+                                                </div>
+                                                <div class="fm-content">
+                                                    <h4>${item.name}</h4>
+                                                    <p class="date-agency">
+                                                        <span class="fm-date">${item.launchDate}</span>
+                                                        By <span class="fm-agency">${item.agency}</span>
+                                                    </p>
+                                                    <p class="fm-objective">
+                                                        ${item.objective}
+                                                    </p>
+                                                </div>
+                                                <div class="fm-icons">
+                                                    <img src="./assets/icons/delete.png" class="fm-delete fm-icon" onclick="deleteItem(${item.id}, '${item.name}');">
+                                                    <img src="./assets/icons/edit.png" class="fm-edit fm-icon" onclick="edit(${item.id});">
+                                                    <img src="./assets/icons/cancel.png" class="fm-cancel fm-icon" onclick="favorite(${item.id}, false);">
+                                                </div>
+                                            </div>
+                                        `
+        }
 
     }
     else {
@@ -223,46 +258,17 @@ searchFilter.addEventListener("input", filter);
 
 // favorite list
 let favoriteBar = document.getElementById("favorite-bar");
-var favoriteList = document.getElementById("fms-list");
 var favoriteListIcon = document.getElementById("favorite-icon");
 var closeFavoriteListIcon = document.getElementById("closeFmsIcon");
 
 // show or hide the favorite missions
-favoriteListIcon.addEventListener('click', () => {
+favoriteListIcon.addEventListener('click', function showFavorite() {
     favoriteBar.classList.remove("close-fms");
 
     //getting the favorite missions
     let favMissions = missions.items.filter(item => item.favorite);
     if (favMissions.length == 0) {
 
-    }
-
-    // clean the list first
-    favoriteList.innerHTML = "";
-    //render the items in the favorite list
-    for (const item of favMissions) {
-        favoriteList.innerHTML += `
-        <div class="fm">
-                <div class="fm-image">
-                    <img src="${item.image}">
-                </div>
-                <div class="fm-content">
-                    <h4>${item.name}</h4>
-                    <p class="date-agency">
-                        <span class="fm-date">${item.launchDate}</span>
-                        By <span class="fm-agency">${item.agency}</span>
-                    </p>
-                    <p class="fm-objective">
-                        ${item.objective}
-                    </p>
-                </div>
-                <div class="fm-icons">
-                    <img src="./assets/icons/delete.png" class="fm-delete fm-icon">
-                    <img src="./assets/icons/edit.png" class="fm-edit fm-icon">
-                    <img src="./assets/icons/cancel.png" class="fm-cancel fm-icon">
-                </div>
-            </div>
-        `;
     }
 })
 closeFavoriteListIcon.addEventListener('click', () => {
