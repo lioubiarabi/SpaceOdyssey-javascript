@@ -69,6 +69,10 @@ function putItems(items) {
 
         // render the favorite misions in favorite missions bar: (update auto when any changes happend)
         let favMissions = missions.items.filter(item=>item.favorite);
+        if (!favMissions.length) {
+            document.getElementById("noFavoriteMissionsAlert").style.display = "block";
+            return;
+        }
         
         for (const item of favMissions) {
             document.getElementById("fms-list").innerHTML += `
@@ -101,6 +105,7 @@ function putItems(items) {
         document.getElementById("missionsTable").innerHTML = '';
         // show there no missions alert
         document.getElementById("noMissionsAlert").style.display = "block";
+        document.getElementById("noFavoriteMissionsAlert").style.display = "block";
     }
 }
 
