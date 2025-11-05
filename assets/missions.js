@@ -223,30 +223,39 @@ yearFilter.addEventListener("change", filter);
 searchFilter.addEventListener("input", filter);
 
 // favorite list
+let favoriteBar = document.getElementById("favorite-bar");
 var favoriteListButton = document.getElementById("favorite-list");
 var favoriteListIcon = document.getElementById("favorite-icon");
+var closeFavoriteListIcon = document.getElementById("closeFmsIcon");
 
-favoriteListButton.addEventListener("click", () => {
-    if (!favoriteList) {
-        // render the favorite missions
-        let favoriteItems = missions.items.filter(item => item.favorite);
-        putItems(favoriteItems);
+// favoriteListButton.addEventListener("click", () => {
+//     if (!favoriteList) {
+//         // render the favorite missions
+//         let favoriteItems = missions.items.filter(item => item.favorite);
+//         putItems(favoriteItems);
 
-        // change the fav button
-        favoriteListButton.style.background = 'white';
-        favoriteListIcon.src = "./assets/icons/lightb-star.png";
+//         // change the fav button
+//         favoriteListButton.style.background = 'white';
+//         favoriteListIcon.src = "./assets/icons/lightb-star.png";
 
-        favoriteList = true;
+//         favoriteList = true;
 
-    } else {
-        // render all the missions;
-        putItems(missions.items);
+//     } else {
+//         // render all the missions;
+//         putItems(missions.items);
 
-        // change the fav button
-        favoriteListButton.style.background = 'var(--lightb)';
-        favoriteListIcon.src = "./assets/icons/white-star.png";
+//         // change the fav button
+//         favoriteListButton.style.background = 'var(--lightb)';
+//         favoriteListIcon.src = "./assets/icons/white-star.png";
 
-        favoriteList = false;
+//         favoriteList = false;
 
-    }
+//     }
+// })
+
+favoriteListIcon.addEventListener('click', ()=>{
+    favoriteBar.classList.remove("close-fms");
+})
+closeFavoriteListIcon.addEventListener('click', ()=>{
+    favoriteBar.classList.add("close-fms");
 })
