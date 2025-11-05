@@ -1605,10 +1605,14 @@ transform: scale(1);
     background: #fff;
     border-radius: 10px;
     box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.20);
+    cursor: pointer;
 }
 
 .fm .fm-icons .fm-icon:hover {
     background: var(--lightgray);
+}
+#closeFmsIcon {
+    cursor: pointer;
 }
 
 .close-fms {
