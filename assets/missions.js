@@ -120,6 +120,7 @@ form.addEventListener("input", () => {
 
 })
 
+
 // add new mission when clicking add new mission button
 function newMission() {
     // change the modal title to add new mission when click add new button and clear the form
@@ -133,6 +134,8 @@ function newMission() {
     // set the button to add new mission function
 
     missionModalButton.addEventListener("click", () => {
+        missionModalButton.disabled = true;
+        
         var inputs = form.querySelectorAll(".missionForm");
 
         // add the mission to the missions object
@@ -145,6 +148,11 @@ function newMission() {
             "launchDate": inputs[3].value,
             "image": URL.createObjectURL(inputs[4].files[0])
         });
+
+        // reset filters
+        agencies = [];
+        years = [];
+
         // render the new item in the table
         putItems(missions.items);
 
@@ -154,7 +162,6 @@ function newMission() {
         //clean the form and close the modale
         form.reset();
         $('#missionModal').modal('hide');
-        missionModalButton.disabled = true;
 
     })
 
@@ -164,6 +171,10 @@ function newMission() {
 function deleteItem(id, missionName) {
     //showing the confirmation model
     $('#confirmationModel').modal('show');
+
+    // reset filters
+    agencies = [];
+    years = [];
 
     // change the title of the mission in the model
     document.getElementById("deleteMissionTitle").innerText = missionName;
@@ -196,6 +207,10 @@ function edit(id) {
 
     // show the modal to edit
     $('#missionModal').modal('show');
+
+    // reset filters
+    agencies = [];
+    years = [];
 
     //fill the modal inputs with the mission value
     var missionIndex = missions.items.findIndex(mission => mission.id == id);
