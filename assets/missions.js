@@ -1,7 +1,6 @@
 //get the missions from localStorage
 let missions = JSON.parse(localStorage.getItem("missions"));
 let agencies = [], years = [], filteredMissions = [];
-let favoriteList = false;
 
 
 if (missions) {
@@ -66,7 +65,7 @@ function putItems(items) {
         // clean mission table list
         document.getElementById("missionsTable").innerHTML = '';
         // show there no missions alert
-         document.getElementById("noMissionsAlert").style.display = "block";
+        document.getElementById("noMissionsAlert").style.display = "block";
     }
 }
 
@@ -224,38 +223,48 @@ searchFilter.addEventListener("input", filter);
 
 // favorite list
 let favoriteBar = document.getElementById("favorite-bar");
-var favoriteListButton = document.getElementById("favorite-list");
+var favoriteList = document.getElementById("fms-list");
 var favoriteListIcon = document.getElementById("favorite-icon");
 var closeFavoriteListIcon = document.getElementById("closeFmsIcon");
 
-// favoriteListButton.addEventListener("click", () => {
-//     if (!favoriteList) {
-//         // render the favorite missions
-//         let favoriteItems = missions.items.filter(item => item.favorite);
-//         putItems(favoriteItems);
-
-//         // change the fav button
-//         favoriteListButton.style.background = 'white';
-//         favoriteListIcon.src = "./assets/icons/lightb-star.png";
-
-//         favoriteList = true;
-
-//     } else {
-//         // render all the missions;
-//         putItems(missions.items);
-
-//         // change the fav button
-//         favoriteListButton.style.background = 'var(--lightb)';
-//         favoriteListIcon.src = "./assets/icons/white-star.png";
-
-//         favoriteList = false;
-
-//     }
-// })
-
-favoriteListIcon.addEventListener('click', ()=>{
+// show or hide the favorite missions
+favoriteListIcon.addEventListener('click', () => {
     favoriteBar.classList.remove("close-fms");
+
+    //getting the favorite missions
+    let favMissions = missions.items.filter(item => item.favorite);
+    if (favMissions.length == 0) {
+
+    }
+
+    // clean the list first
+    favoriteList.innerHTML = "";
+    //render the items in the favorite list
+    for (const item of favMissions) {
+        favoriteList.innerHTML += `
+        <div class="fm">
+                <div class="fm-image">
+                    <img src="${item.image}">
+                </div>
+                <div class="fm-content">
+                    <h4>${item.name}</h4>
+                    <p class="date-agency">
+                        <span class="fm-date">${item.launchDate}</span>
+                        By <span class="fm-agency">${item.agency}</span>
+                    </p>
+                    <p class="fm-objective">
+                        ${item.objective}
+                    </p>
+                </div>
+                <div class="fm-icons">
+                    <img src="./assets/icons/delete.png" class="fm-delete fm-icon">
+                    <img src="./assets/icons/edit.png" class="fm-edit fm-icon">
+                    <img src="./assets/icons/cancel.png" class="fm-cancel fm-icon">
+                </div>
+            </div>
+        `;
+    }
 })
-closeFavoriteListIcon.addEventListener('click', ()=>{
+closeFavoriteListIcon.addEventListener('click', () => {
     favoriteBar.classList.add("close-fms");
 })
